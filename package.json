@@ -2,10 +2,13 @@
   "name": "eqlis-ts-gen",
   "version": "0.0.1",
   "description": "swagger 生成 ts",
-  "main": "index.js",
+  "main": "./lib/codegen.js",
   "scripts": {
     "test": "grunt",
     "clean": "rm -rf tmp-*"
+  },
+  "bin": {
+    "eqlistsgen": "bin/tsgen.js"
   },
   "author": "Anber <shuangyan_m@hotmail.com>",
   "license": "MIT",
