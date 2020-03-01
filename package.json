@@ -1,0 +1,37 @@
+{
+  "name": "eqlis-ts-gen",
+  "version": "0.0.1",
+  "description": "swagger 生成 ts",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt",
+    "clean": "rm -rf tmp-*"
+  },
+  "author": "Anber <shuangyan_m@hotmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@types/mustache": "^4.0.1",
+    "commander": "^4.1.1",
+    "js-beautify": "^1.10.3",
+    "js-yaml": "^3.13.1",
+    "jshint": "^2.11.0",
+    "lodash": "^4.17.15",
+    "mustache": "^4.0.0",
+    "swagger-client": "^3.10.0",
+    "update-notifier": "^4.1.0"
+  },
+  "devDependencies": {
+    "final-fs": "^1.6.1",
+    "grunt": "^1.0.4",
+    "grunt-contrib-jshint": "^2.1.0",
+    "grunt-jsonlint": "^2.1.1",
+    "grunt-vows": "^0.4.2",
+    "matchdep": "^2.0.0 ",
+    "q": "^1.5.1",
+    "request": "^2.88.2",
+    "superagent": "^5.2.2",
+    "tmp": "0.1.0",
+    "typescript": "^3.8.3",
+    "vows": "^0.8.2"
+  }
+}

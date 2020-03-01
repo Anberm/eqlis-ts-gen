@@ -1,0 +1,15 @@
+{{#components}}
+export {{#tsType.isObject}}interface{{/tsType.isObject}}  {{#tsType.isEnum}}enum{{/tsType.isEnum}} {{name}} {
+    {{#tsType.properties}}
+    {{#isArray}}
+    {{name}}: {{elementType.target}}[];
+    {{/isArray}}
+    {{#isEnum}}
+    {{name}}: {{target}};
+    {{/isEnum}}
+    {{#isAtomic}}
+    {{name}}{{#nullable}}?{{/nullable}}: {{tsType}};
+    {{/isAtomic}}
+    {{/tsType.properties}}
+}
+{{/components}}

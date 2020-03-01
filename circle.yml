@@ -1,0 +1,6 @@
+machine:
+  node:
+    version: 12.14.1
+dependencies:
+  post:
+    - npm install grunt-cli -g

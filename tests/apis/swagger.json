@@ -1,0 +1,715 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+      "title": "m360 API",
+      "version": "v1"
+    },
+    "paths": {
+      "/api/Account/login": {
+        "post": {
+          "tags": [
+            "Account"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json-patch+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginReqDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginReqDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginReqDto"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginReqDto"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/Account/organizations": {
+        "get": {
+          "tags": [
+            "Account"
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/UserOrganization"
+                    }
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/UserOrganization"
+                    }
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/UserOrganization"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/Account/choose-org": {
+        "post": {
+          "tags": [
+            "Account"
+          ],
+          "parameters": [
+            {
+              "name": "orgId",
+              "in": "query",
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/Account/signup": {
+        "get": {
+          "tags": [
+            "Account"
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SignupInitDto"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SignupInitDto"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SignupInitDto"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "Account"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json-patch+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SignupReqDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SignupReqDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SignupReqDto"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SignupReqDto"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SignupRespDto"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SignupRespDto"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SignupRespDto"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProblemDetails"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProblemDetails"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProblemDetails"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/Account": {
+        "post": {
+          "tags": [
+            "Account"
+          ],
+          "requestBody": {
+            "content": {
+              "multipart/form-data": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "encoding": {
+                  "email": {
+                    "style": "form"
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Account"
+          ],
+          "parameters": [
+            {
+              "name": "returnUrl",
+              "in": "query",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/Account/logout": {
+        "post": {
+          "tags": [
+            "Account"
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/Organization/{id}": {
+        "get": {
+          "tags": [
+            "Organization"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "$ref": "#/components/schemas/OrganizationDto"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/OrganizationDto"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/OrganizationDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "LoginReqDto": {
+          "required": [
+            "email",
+            "password"
+          ],
+          "type": "object",
+          "properties": {
+            "email": {
+              "maxLength": 100,
+              "minLength": 0,
+              "type": "string",
+              "format": "email"
+            },
+            "password": {
+              "maxLength": 25,
+              "minLength": 8,
+              "type": "string"
+            },
+            "returnUrl": {
+              "type": "string",
+              "nullable": true
+            },
+            "rememberLogin": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        },
+        "UserOrganization": {
+          "type": "object",
+          "properties": {
+            "userId": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "userName": {
+              "type": "string",
+              "nullable": true
+            },
+            "orgId": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "orgName": {
+              "type": "string",
+              "nullable": true
+            },
+            "orgLogo": {
+              "type": "string",
+              "nullable": true
+            },
+            "isPrimary": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        },
+        "OrgType": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "nullable": true
+            },
+            "description": {
+              "type": "string",
+              "nullable": true
+            },
+            "code": {
+              "type": "string",
+              "nullable": true
+            },
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "isDeleted": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        },
+        "SecurityQuestion": {
+          "type": "object",
+          "properties": {
+            "question": {
+              "type": "string",
+              "nullable": true
+            },
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "isDeleted": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        },
+        "SignupInitDto": {
+          "type": "object",
+          "properties": {
+            "orgTypes": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/OrgType"
+              },
+              "nullable": true
+            },
+            "securityQuestions": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/SecurityQuestion"
+              },
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "SignupReqDto": {
+          "required": [
+            "confirmPassword",
+            "email",
+            "firstName",
+            "lastName",
+            "password",
+            "securityAnswer",
+            "securityQuestion"
+          ],
+          "type": "object",
+          "properties": {
+            "firstName": {
+              "maxLength": 30,
+              "minLength": 0,
+              "type": "string"
+            },
+            "lastName": {
+              "maxLength": 30,
+              "minLength": 0,
+              "type": "string"
+            },
+            "email": {
+              "maxLength": 100,
+              "minLength": 0,
+              "type": "string",
+              "format": "email"
+            },
+            "securityQuestion": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "securityAnswer": {
+              "maxLength": 50,
+              "minLength": 0,
+              "type": "string"
+            },
+            "orgType": {
+              "type": "string",
+              "nullable": true
+            },
+            "einsnn": {
+              "type": "string",
+              "nullable": true
+            },
+            "password": {
+              "maxLength": 25,
+              "minLength": 8,
+              "type": "string",
+              "format": "password"
+            },
+            "confirmPassword": {
+              "type": "string",
+              "format": "password"
+            },
+            "returnUrl": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "SignupRespDto": {
+          "type": "object",
+          "properties": {
+            "returnUrl": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "ProblemDetails": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "nullable": true
+            },
+            "title": {
+              "type": "string",
+              "nullable": true
+            },
+            "status": {
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            },
+            "detail": {
+              "type": "string",
+              "nullable": true
+            },
+            "instance": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false
+          }
+        },
+        "ED": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer",
+          "format": "int32"
+        },
+        "OrganizationDto": {
+          "type": "object",
+          "properties": {
+            "ed": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/ED"
+                }
+              ]
+            },
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "logo": {
+              "type": "string",
+              "nullable": true
+            },
+            "isActive": {
+              "type": "boolean"
+            },
+            "activeTime": {
+              "type": "string",
+              "format": "date-time",
+              "nullable": true
+            },
+            "isTryOut": {
+              "type": "boolean"
+            },
+            "tryOutTime": {
+              "type": "string",
+              "format": "date-time",
+              "nullable": true
+            },
+            "orgTypeId": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "orgTypeCode": {
+              "type": "string",
+              "nullable": true
+            },
+            "name": {
+              "type": "string",
+              "nullable": true
+            },
+            "legalName": {
+              "type": "string",
+              "nullable": true
+            },
+            "taxId": {
+              "type": "string",
+              "nullable": true
+            },
+            "phone": {
+              "type": "string",
+              "nullable": true
+            },
+            "howHeard": {
+              "type": "string",
+              "nullable": true
+            },
+            "website": {
+              "type": "string",
+              "nullable": true
+            },
+            "description": {
+              "type": "string",
+              "nullable": true
+            },
+            "facebookProfileUrl": {
+              "type": "string",
+              "nullable": true
+            },
+            "instagramProfileUrl": {
+              "type": "string",
+              "nullable": true
+            },
+            "linkedInProfileUrl": {
+              "type": "string",
+              "nullable": true
+            },
+            "twitterProfileUrl": {
+              "type": "string",
+              "nullable": true
+            },
+            "annualReceivingSupportedCount": {
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            },
+            "cause": {
+              "type": "string",
+              "nullable": true
+            },
+            "plan": {
+              "type": "string",
+              "nullable": true
+            },
+            "vision": {
+              "type": "string",
+              "nullable": true
+            },
+            "impact": {
+              "type": "string",
+              "nullable": true
+            },
+            "purpose": {
+              "type": "string",
+              "nullable": true
+            },
+            "irsStatus": {
+              "type": "string",
+              "nullable": true
+            },
+            "is501C3": {
+              "type": "boolean"
+            },
+            "allowReceivingTeams": {
+              "type": "boolean"
+            },
+            "yearStarted": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "previousHistory": {
+              "type": "string",
+              "nullable": true
+            },
+            "paidStaff": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "volunteers": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "projectedRevenue": {
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            },
+            "previousRevenue": {
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            },
+            "haveBudget": {
+              "type": "boolean"
+            },
+            "adhereToBudget": {
+              "type": "boolean",
+              "nullable": true
+            },
+            "haveDebt": {
+              "type": "boolean"
+            },
+            "debtAmount": {
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            },
+            "statsYear": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "invisible": {
+              "type": "boolean"
+            },
+            "anonymous": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    }
+  }
