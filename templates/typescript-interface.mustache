@@ -10,6 +10,9 @@ export {{#tsType.isObject}}interface{{/tsType.isObject}}  {{#tsType.isEnum}}enum
     {{#isAtomic}}
     {{name}}{{#nullable}}?{{/nullable}}: {{tsType}};
     {{/isAtomic}}
+    {{#isObject}}
+    {{name}}{{#nullable}}?{{/nullable}}: {{target}};
+    {{/isObject}}
     {{/tsType.properties}}
 }
 {{/components}}
