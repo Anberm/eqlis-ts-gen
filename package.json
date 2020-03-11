@@ -20,7 +20,6 @@
     "jshint": "^2.11.0",
     "lodash": "^4.17.15",
     "mustache": "^4.0.0",
-    "swagger-client": "^3.10.0",
     "update-notifier": "^4.1.0"
   },
   "devDependencies": {

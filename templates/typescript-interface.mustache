@@ -2,7 +2,7 @@
 export {{#tsType.isObject}}interface{{/tsType.isObject}}  {{#tsType.isEnum}}enum{{/tsType.isEnum}} {{name}} {
     {{#tsType.properties}}
     {{#isArray}}
-    {{name}}: {{elementType.target}}[];
+    {{name}}: {{#elementType.target}}{{elementType.target}}{{/elementType.target}}{{^elementType.target}}{{elementType.tsType}}{{/elementType.target}}[];
     {{/isArray}}
     {{#isEnum}}
     {{name}}: {{target}};

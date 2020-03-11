@@ -6,6 +6,7 @@ var fs = require('fs');
 var ffs = require('final-fs');
 var ts = require('typescript');
 var tmp = require('tmp');
+var http = require('http');
 
 var CodeGen = require('../lib/codegen').CodeGen;
 
@@ -51,18 +52,44 @@ function compileString(testName, input) {
     return !errorsSeen;
 }
 
-var batch = {};
-var list = ffs.readdirSync('tests/apis');
-list.forEach(function (file) {
-    file = 'tests/apis/' + file;
-    batch[file] = function () {
-        var swagger = JSON.parse(fs.readFileSync(file, 'UTF-8'));
+// var batch = {};
+// var list = ffs.readdirSync('tests/apis');
+// list.forEach(function (file) {
+//     file = 'tests/apis/' + file;
+//     batch[file] = function () {
+//         var swagger = JSON.parse(fs.readFileSync(file, 'UTF-8'));
+//         var result = CodeGen.getTypescriptCode({
+//             swagger: swagger
+//         });
+//         console.log(result);
+
+//         assert(typeof (result), 'string');
+//     };
+// });
+// vows.describe('Test Generation').addBatch(batch).export(module);
+
+var options = {
+    hostname: 'localhost',
+    port: 61878,
+    path: '/swagger/v1/swagger.json',
+    method: 'GET'
+};
+
+var req = http.request(options, function (res) {
+    console.log('STATUS: ' + res.statusCode);
+    console.log('HEADERS: ' + JSON.stringify(res.headers));
+    res.setEncoding('utf8');
+    res.on('data', function (data) {
+        var swagger = JSON.parse(data);
         var result = CodeGen.getTypescriptCode({
             swagger: swagger
         });
         console.log(result);
-        
-        assert(typeof (result), 'string');
-    };
+    });
 });
-vows.describe('Test Generation').addBatch(batch).export(module);
+
+req.on('error', function (e) {
+    console.log('problem with request: ' + e.message);
+});
+
+req.end();
