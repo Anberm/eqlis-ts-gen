@@ -12,6 +12,11 @@
         ],
         "requestBody": {
           "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginReqDto"
+              }
+            },
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/LoginReqDto"
@@ -108,6 +113,11 @@
         ],
         "requestBody": {
           "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignupReqDto"
+              }
+            },
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/SignupReqDto"
@@ -181,7 +191,8 @@
                 "type": "object",
                 "properties": {
                   "email": {
-                    "type": "string"
+                    "type": "string",
+                    "nullable": true
                   }
                 }
               },
@@ -208,7 +219,8 @@
             "name": "returnUrl",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "nullable": true
             }
           }
         ],
@@ -274,6 +286,11 @@
         ],
         "requestBody": {
           "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PeopleDto"
+              }
+            },
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/PeopleDto"
@@ -303,6 +320,11 @@
         ],
         "requestBody": {
           "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PeopleDto"
+              }
+            },
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/PeopleDto"
@@ -435,6 +457,11 @@
         ],
         "requestBody": {
           "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ImproveDto"
+              }
+            },
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/ImproveDto"
@@ -458,539 +485,6 @@
           }
         }
       }
-    },
-    "/api/Resource/countries": {
-      "get": {
-        "tags": [
-          "Resource"
-        ],
-        "responses": {
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Country"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Country"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Country"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/Resource/stateorprovinces/{id}": {
-      "get": {
-        "tags": [
-          "Resource"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/StateOrProvince"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/StateOrProvince"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/StateOrProvince"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/Resource/frcategorymatrixs": {
-      "get": {
-        "tags": [
-          "Resource"
-        ],
-        "responses": {
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/FRCategoryMatrix"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/FRCategoryMatrix"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/FRCategoryMatrix"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/Resource/orgcategories": {
-      "get": {
-        "tags": [
-          "Resource"
-        ],
-        "responses": {
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/OrgCategory"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/OrgCategory"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/OrgCategory"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/Resource/affiliates": {
-      "get": {
-        "tags": [
-          "Resource"
-        ],
-        "responses": {
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Affiliate"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Affiliate"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Affiliate"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/Resource/healthratings": {
-      "get": {
-        "tags": [
-          "Resource"
-        ],
-        "responses": {
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/HealthRating"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/HealthRating"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/HealthRating"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/Resource/rfftypes": {
-      "get": {
-        "tags": [
-          "Resource"
-        ],
-        "responses": {
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/RFFType"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/RFFType"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/RFFType"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/Resource/reportcategories": {
-      "get": {
-        "tags": [
-          "Resource"
-        ],
-        "responses": {
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ReportCategory"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ReportCategory"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ReportCategory"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/Resource/completeness": {
-      "get": {
-        "tags": [
-          "Resource"
-        ],
-        "responses": {
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/OrgCompletenessStep"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/OrgCompletenessStep"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/OrgCompletenessStep"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
     }
   },
   "components": {
@@ -1006,12 +500,14 @@
             "maxLength": 100,
             "minLength": 0,
             "type": "string",
-            "format": "email"
+            "format": "email",
+            "nullable": true
           },
           "password": {
             "maxLength": 25,
             "minLength": 8,
-            "type": "string"
+            "type": "string",
+            "nullable": true
           },
           "returnUrl": {
             "type": "string",
@@ -1020,8 +516,7 @@
           "rememberLogin": {
             "type": "boolean"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UserOrganization": {
         "type": "object",
@@ -1049,8 +544,7 @@
           "isPrimary": {
             "type": "boolean"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "OrgType": {
         "type": "object",
@@ -1074,8 +568,7 @@
           "isDeleted": {
             "type": "boolean"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "SecurityQuestion": {
         "type": "object",
@@ -1091,8 +584,7 @@
           "isDeleted": {
             "type": "boolean"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "SignupInitDto": {
         "type": "object",
@@ -1111,8 +603,7 @@
             },
             "nullable": true
           }
-        },
-        "additionalProperties": false
+        }
       },
       "SignupReqDto": {
         "required": [
@@ -1129,18 +620,21 @@
           "firstName": {
             "maxLength": 30,
             "minLength": 0,
-            "type": "string"
+            "type": "string",
+            "nullable": true
           },
           "lastName": {
             "maxLength": 30,
             "minLength": 0,
-            "type": "string"
+            "type": "string",
+            "nullable": true
           },
           "email": {
             "maxLength": 100,
             "minLength": 0,
             "type": "string",
-            "format": "email"
+            "format": "email",
+            "nullable": true
           },
           "securityQuestion": {
             "type": "integer",
@@ -1149,7 +643,8 @@
           "securityAnswer": {
             "maxLength": 50,
             "minLength": 0,
-            "type": "string"
+            "type": "string",
+            "nullable": true
           },
           "orgType": {
             "type": "string",
@@ -1163,18 +658,19 @@
             "maxLength": 25,
             "minLength": 8,
             "type": "string",
-            "format": "password"
+            "format": "password",
+            "nullable": true
           },
           "confirmPassword": {
             "type": "string",
-            "format": "password"
+            "format": "password",
+            "nullable": true
           },
           "returnUrl": {
             "type": "string",
             "nullable": true
           }
-        },
-        "additionalProperties": false
+        }
       },
       "SignupRespDto": {
         "type": "object",
@@ -1183,8 +679,7 @@
             "type": "string",
             "nullable": true
           }
-        },
-        "additionalProperties": false
+        }
       },
       "ProblemDetails": {
         "type": "object",
@@ -1212,8 +707,7 @@
           }
         },
         "additionalProperties": {
-          "type": "object",
-          "additionalProperties": false
+          "type": "object"
         }
       },
       "PeopleDto": {
@@ -1239,8 +733,7 @@
             "type": "string",
             "nullable": true
           }
-        },
-        "additionalProperties": false
+        }
       },
       "OrganizationDto": {
         "required": [
@@ -1292,7 +785,8 @@
           },
           "name": {
             "maxLength": 100,
-            "type": "string"
+            "type": "string",
+            "nullable": true
           },
           "legalName": {
             "maxLength": 100,
@@ -1376,13 +870,12 @@
             "type": "string",
             "nullable": true
           }
-        },
-        "additionalProperties": false
+        }
       },
       "AddressDto": {
         "required": [
+          "address1",
           "city",
-          "detail",
           "postalCode"
         ],
         "type": "object",
@@ -1397,18 +890,65 @@
           },
           "city": {
             "maxLength": 50,
-            "type": "string"
+            "type": "string",
+            "nullable": true
           },
           "postalCode": {
             "maxLength": 20,
-            "type": "string"
+            "type": "string",
+            "nullable": true
           },
-          "detail": {
+          "address1": {
             "maxLength": 100,
-            "type": "string"
+            "type": "string",
+            "nullable": true
+          },
+          "address2": {
+            "maxLength": 100,
+            "type": "string",
+            "nullable": true
           }
-        },
-        "additionalProperties": false
+        }
+      },
+      "OrgReportCategoryReqDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "value": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        }
+      },
+      "OrgHealthRatingDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "value": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "StripeCodeDto": {
+        "type": "object",
+        "properties": {
+          "paymentToken": {
+            "type": "string",
+            "nullable": true
+          },
+          "couponCode": {
+            "type": "string",
+            "nullable": true
+          }
+        }
       },
       "ImproveDto": {
         "required": [
@@ -1432,7 +972,8 @@
           },
           "name": {
             "maxLength": 100,
-            "type": "string"
+            "type": "string",
+            "nullable": true
           },
           "legalName": {
             "maxLength": 100,
@@ -1449,12 +990,7 @@
             "format": "int32"
           },
           "address": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/AddressDto"
-              }
-            ],
-            "nullable": true
+            "$ref": "#/components/schemas/AddressDto"
           },
           "is501C3": {
             "type": "boolean"
@@ -1547,9 +1083,25 @@
             "maxLength": 255,
             "type": "string",
             "nullable": true
+          },
+          "orgReportCategories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrgReportCategoryReqDto"
+            },
+            "nullable": true
+          },
+          "orgHealthRatings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrgHealthRatingDto"
+            },
+            "nullable": true
+          },
+          "stripeCode": {
+            "$ref": "#/components/schemas/StripeCodeDto"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "Country": {
         "type": "object",
@@ -1577,8 +1129,7 @@
           "isDeleted": {
             "type": "boolean"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "StateOrProvince": {
         "type": "object",
@@ -1602,29 +1153,7 @@
           "isDeleted": {
             "type": "boolean"
           }
-        },
-        "additionalProperties": false
-      },
-      "FRCategoryMatrix": {
-        "type": "object",
-        "properties": {
-          "orgCategoryId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "reportCategoryId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "isDeleted": {
-            "type": "boolean"
-          }
-        },
-        "additionalProperties": false
+        }
       },
       "OrgCategory": {
         "type": "object",
@@ -1648,75 +1177,7 @@
           "isDeleted": {
             "type": "boolean"
           }
-        },
-        "additionalProperties": false
-      },
-      "Affiliate": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "isDeleted": {
-            "type": "boolean"
-          }
-        },
-        "additionalProperties": false
-      },
-      "HealthRating": {
-        "type": "object",
-        "properties": {
-          "displayOrder": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "description": {
-            "type": "string",
-            "nullable": true
-          },
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "isDeleted": {
-            "type": "boolean"
-          }
-        },
-        "additionalProperties": false
-      },
-      "RFFType": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "description": {
-            "type": "string",
-            "nullable": true
-          },
-          "code": {
-            "type": "string",
-            "nullable": true
-          },
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "isDeleted": {
-            "type": "boolean"
-          }
-        },
-        "additionalProperties": false
+        }
       },
       "ReportCategory": {
         "type": "object",
@@ -1740,8 +1201,97 @@
           "isDeleted": {
             "type": "boolean"
           }
-        },
-        "additionalProperties": false
+        }
+      },
+      "FRCategoryMatrix": {
+        "type": "object",
+        "properties": {
+          "orgCategoryId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "orgCategory": {
+            "$ref": "#/components/schemas/OrgCategory"
+          },
+          "reportCategoryId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "reportCategory": {
+            "$ref": "#/components/schemas/ReportCategory"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isDeleted": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Affiliate": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isDeleted": {
+            "type": "boolean"
+          }
+        }
+      },
+      "HealthRating": {
+        "type": "object",
+        "properties": {
+          "displayOrder": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isDeleted": {
+            "type": "boolean"
+          }
+        }
+      },
+      "RFFType": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isDeleted": {
+            "type": "boolean"
+          }
+        }
       },
       "OrgCompletenessStep": {
         "type": "object",
@@ -1761,8 +1311,7 @@
           "isDeleted": {
             "type": "boolean"
           }
-        },
-        "additionalProperties": false
+        }
       }
     }
   }
