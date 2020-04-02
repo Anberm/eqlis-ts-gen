@@ -1,331 +1,168 @@
 export interface LoginReqDto {
+  email: string;
 
+  password: string;
 
+  returnUrl?: string;
 
-    email: string;
-
-
-
-    password: string;
-
-
-
-    returnUrl?: string;
-
-
-
-    rememberLogin: boolean;
+  rememberLogin: boolean;
 }
 export interface UserOrganization {
+  userId: number;
 
+  userName?: string;
 
+  orgId: number;
 
-    userId: number;
+  orgName?: string;
 
+  orgLogo?: string;
 
-
-    userName?: string;
-
-
-
-    orgId: number;
-
-
-
-    orgName?: string;
-
-
-
-    orgLogo?: string;
-
-
-
-    isPrimary: boolean;
+  isPrimary: boolean;
 }
 export interface OrgType {
+  name?: string;
 
+  description?: string;
 
+  code?: string;
 
-    name?: string;
+  id: number;
 
-
-
-    description?: string;
-
-
-
-    code?: string;
-
-
-
-    id: number;
-
-
-
-    isDeleted: boolean;
+  isDeleted: boolean;
 }
 export interface SecurityQuestion {
+  question?: string;
 
+  id: number;
 
-
-    question?: string;
-
-
-
-    id: number;
-
-
-
-    isDeleted: boolean;
+  isDeleted: boolean;
 }
 export interface SignupInitDto {
+  orgTypes: OrgType[];
 
-    orgTypes: OrgType[];
-
-
-
-    securityQuestions: SecurityQuestion[];
-
-
+  securityQuestions: SecurityQuestion[];
 }
 export interface SignupReqDto {
+  firstName: string;
 
+  lastName: string;
 
+  email: string;
 
-    firstName: string;
+  securityQuestion: number;
 
+  securityAnswer: string;
 
+  orgType?: string;
 
-    lastName: string;
+  einsnn?: string;
 
+  password: string;
 
+  confirmPassword: string;
 
-    email: string;
-
-
-
-    securityQuestion: number;
-
-
-
-    securityAnswer: string;
-
-
-
-    orgType?: string;
-
-
-
-    einsnn?: string;
-
-
-
-    password: string;
-
-
-
-    confirmPassword: string;
-
-
-
-    returnUrl?: string;
+  returnUrl?: string;
 }
 export interface SignupRespDto {
-
-
-
-    returnUrl?: string;
+  returnUrl?: string;
 }
 export interface ProblemDetails {
+  type?: string;
 
+  title?: string;
 
+  status?: number;
 
-    type?: string;
+  detail?: string;
 
-
-
-    title?: string;
-
-
-
-    status?: number;
-
-
-
-    detail?: string;
-
-
-
-    instance?: string;
+  instance?: string;
 }
-export enum ED {
+export enum ProjectType {
+  Funding = 0,
+  Receiving = 1
 }
+
 export interface OrganizationDto {
+  id: number;
 
+  logo?: string;
 
+  isActive: boolean;
 
+  activeTime?: string;
 
+  isTryOut: boolean;
 
+  tryOutTime?: string;
 
-    id: number;
+  orgTypeId: number;
 
+  orgTypeCode?: string;
 
+  name?: string;
 
-    logo?: string;
+  legalName?: string;
 
+  taxId?: string;
 
+  phone?: string;
 
-    isActive: boolean;
+  howHeard?: string;
 
+  website?: string;
 
+  description?: string;
 
-    activeTime?: string;
+  facebookProfileUrl?: string;
 
+  instagramProfileUrl?: string;
 
+  linkedInProfileUrl?: string;
 
-    isTryOut: boolean;
+  twitterProfileUrl?: string;
 
+  annualReceivingSupportedCount?: number;
 
+  cause?: string;
 
-    tryOutTime?: string;
+  plan?: string;
 
+  vision?: string;
 
+  impact?: string;
 
-    orgTypeId: number;
+  purpose?: string;
 
+  irsStatus?: string;
 
+  is501C3: boolean;
 
-    orgTypeCode?: string;
+  allowReceivingTeams: boolean;
 
+  yearStarted: number;
 
+  previousHistory?: string;
 
-    name?: string;
+  paidStaff: number;
 
+  volunteers: number;
 
+  projectedRevenue?: number;
 
-    legalName?: string;
+  previousRevenue?: number;
 
+  haveBudget: boolean;
 
+  adhereToBudget?: boolean;
 
-    taxId?: string;
+  haveDebt: boolean;
 
+  debtAmount?: number;
 
+  statsYear: number;
 
-    phone?: string;
+  invisible: boolean;
 
-
-
-    howHeard?: string;
-
-
-
-    website?: string;
-
-
-
-    description?: string;
-
-
-
-    facebookProfileUrl?: string;
-
-
-
-    instagramProfileUrl?: string;
-
-
-
-    linkedInProfileUrl?: string;
-
-
-
-    twitterProfileUrl?: string;
-
-
-
-    annualReceivingSupportedCount?: number;
-
-
-
-    cause?: string;
-
-
-
-    plan?: string;
-
-
-
-    vision?: string;
-
-
-
-    impact?: string;
-
-
-
-    purpose?: string;
-
-
-
-    irsStatus?: string;
-
-
-
-    is501C3: boolean;
-
-
-
-    allowReceivingTeams: boolean;
-
-
-
-    yearStarted: number;
-
-
-
-    previousHistory?: string;
-
-
-
-    paidStaff: number;
-
-
-
-    volunteers: number;
-
-
-
-    projectedRevenue?: number;
-
-
-
-    previousRevenue?: number;
-
-
-
-    haveBudget: boolean;
-
-
-
-    adhereToBudget?: boolean;
-
-
-
-    haveDebt: boolean;
-
-
-
-    debtAmount?: number;
-
-
-
-    statsYear: number;
-
-
-
-    invisible: boolean;
-
-
-
-    anonymous: boolean;
+  anonymous: boolean;
 }

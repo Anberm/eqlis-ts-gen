@@ -17,5 +17,8 @@ export {{#tsType.isObject}}interface{{/tsType.isObject}}  {{#tsType.isEnum}}enum
     {{name}}{{#nullable}}?{{/nullable}}: {{target}};
     {{/isRef}}
     {{/tsType.properties}}
+    {{#tsType.isEnum}}
+     {{&tsType.description}}
+    {{/tsType.isEnum}}
 }
 {{/components}}
